@@ -282,16 +282,17 @@ em{font-style:italic;}
   display:flex; gap: 14px; flex-wrap:wrap;
 }
 .hero-media{
-  aspect-ratio: 3/4;
+  aspect-ratio: 9/16;
   border-radius: var(--radius);
   overflow:hidden;
   background: var(--cream-deep);
 }
 .hero-media img{
   width:100%; height:100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
+
 .hero-spotlight{
   display:grid;
   grid-template-columns: 0.85fr 1fr;
