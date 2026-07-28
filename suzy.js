@@ -1,60 +1,84 @@
 // ===================== CONFIG =====================
-// Swap these placeholders with Suzy's real details.
 const WHATSAPP_NUMBER = "2348147320969"; // digits only, country code, no + or spaces
 const INSTAGRAM_HANDLE = "madebysuxy";
 
 // ===================== PRODUCT DATA =====================
-// price: null means "price coming soon" — set a number (e.g. 85000) once confirmed,
-// and the product card + cart will automatically start showing/using it.
+// Each product now has "variants" — one entry per color, each with its own price.
+// price: null means "price coming soon" for that specific color.
 const PRODUCTS = [
   {
     id: "the-renee",
     name: "The Renée",
-    price: 30000,
     badge: "Handmade to order",
-    image: "renee.webp"
+    image: "renee.webp",
+    variants: [
+      { color: "Red", price: 35000, image: "red.webp" },
+      { color: "Peach", price: 35000, image: "peach.webp" },
+      { color: "Pink", price: 35000, image: "pink.webp" },
+      { color: "Brown", price: 35000, image: "brown.webp" },
+      { color: "Blue", price: 35000, image: "blue.webp" }
+    ]
   },
   {
     id: "kelly-velvet",
     name: "Kelly (Velvet)",
-    price: 80000,
     badge: "Handmade to order",
-    image: "kelly.webp"
+    image: "kelly.webp",
+    variants: [
+      { color: "Velvet", price: 80000 },
+      { color: "Classic pearl", price: 100000, image:"classic pearl.webp" },
+      { color: "Acrylic", price: 100000, image:"Acrylic.webp" }
+    ]
   },
   {
     id: "blossom-choco",
     name: "Blossom (Choco)",
-    price: 35000,
     badge: "Handmade to order",
-    image: "blossom.webp"
+    image: "blossom.webp",
+    variants: [
+      { color: "Choco", price: 40000, image:"blossom.webp" },
+      { color: "Pastel", price: 45000, image:"pastel.webp" },
+      { color: "deep choco", price: 40000, image:"deep choco blo.webp" },
+      { color: "Pink", price: 40000, image:"choco pink.webp" },
+      { color: "Blue", price: 40000, image:"choco blue.webp" }
+
+    ]
   },
   {
     id: "wispy",
     name: "Wispy",
-    price: 100000,
     badge: "Limited edition",
-    image: "wipsy.webp"
+    image: "wipsy.webp",
+    variants: [
+      { color: "Original", price: 100000 }
+    ]
   },
   {
     id: "candy",
     name: "Candy",
-    price: 45000,
     badge: "Handmade to order",
-    image: "candy.webp"
+    image: "candy.webp",
+    variants: [
+      { color: "Original", price: 45000 }
+    ]
   },
   {
     id: "the-junk-clutch",
     name: "The Junk Clutch",
-    price: 70000,
     badge: "Limited edition",
-    image: "junk clutch.webp"
+    image: "junk clutch.webp",
+    variants: [
+      { color: "Original", price: 70000 }
+    ]
   },
   {
     id: "bubbles-polka-dot",
     name: "Bubbles (Polka Dot)",
-    price: 55000,
     badge: "Handmade to order",
-    image: "bubbles.webp"
+    image: "bubbles.webp",
+    variants: [
+      { color: "Polka Dot", price: 55000 }
+    ]
   }
 ];
 
@@ -110,28 +134,45 @@ function renderProducts(){
   const grid = document.getElementById("productGrid");
   const wishlist = getWishlist();
   grid.innerHTML = PRODUCTS.map(p => {
-    const hasPrice = p.price !== null && p.price !== undefined;
     const isWished = wishlist.includes(p.id);
-    const actionBtn = hasPrice
-      ? `<button class="add-to-cart-btn" data-add="${p.id}">Add to Bag</button>`
-      : `<a class="add-to-cart-btn enquire-btn" data-enquire="${p.id}" href="#" target="_blank" rel="noopener">Enquire on WhatsApp</a>`;
+    const pillsHtml = p.variants.map((v, i) => `
+      <button class="color-pill${i===0 ? " active" : ""}" data-pid="${p.id}" data-vidx="${i}">${v.color}</button>
+    `).join("");
+
     return `
-    <div class="product-card">
+    <div class="product-card" data-product="${p.id}">
       <div class="product-media">
         <span class="product-badge">${p.badge}</span>
         <button class="wishlist-btn${isWished ? " active" : ""}" data-wish="${p.id}" aria-label="Add to wishlist">${isWished ? "♥" : "♡"}</button>
-        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <img src="${p.variants[0].image || p.image}" alt="${p.name}" loading="lazy" data-product-img="${p.id}">
       </div>
       <h3 class="product-name">${p.name}</h3>
-      <p class="product-price${hasPrice ? "" : " price-pending"}">${fmtNaira(p.price)}</p>
-      ${actionBtn}
+      <p class="product-price" data-price-for="${p.id}">${fmtNaira(p.variants[0].price)}</p>
+      <div class="color-pills">${pillsHtml}</div>
+      <div class="product-action" data-action-for="${p.id}"></div>
     </div>
   `;
   }).join("");
 
-  grid.querySelectorAll("[data-add]").forEach(btn=>{
-    btn.addEventListener("click", ()=> addToCart(btn.dataset.add));
+  // Render the correct button (Add to Bag / Enquire) for each product's default variant
+  PRODUCTS.forEach(p => updateProductAction(p.id, 0));
+
+  grid.querySelectorAll(".color-pill").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const pid = btn.dataset.pid;
+      const vidx = parseInt(btn.dataset.vidx);
+      const card = btn.closest(".product-card");
+      card.querySelectorAll(".color-pill").forEach(p => p.classList.remove("active"));
+      btn.classList.add("active");
+      const product = PRODUCTS.find(p => p.id === pid);
+      const variant = product.variants[vidx];
+      card.querySelector(`[data-price-for="${pid}"]`).textContent = fmtNaira(variant.price);
+      const imgEl = card.querySelector(`[data-product-img="${pid}"]`);
+      if(imgEl) imgEl.src = variant.image || product.image;
+      updateProductAction(pid, vidx);
+    });
   });
+
   grid.querySelectorAll("[data-wish]").forEach(btn=>{
     btn.addEventListener("click", ()=>{
       toggleWishlist(btn.dataset.wish);
@@ -139,42 +180,62 @@ function renderProducts(){
       btn.textContent = nowActive ? "♥" : "♡";
     });
   });
-  grid.querySelectorAll("[data-enquire]").forEach(btn=>{
-    const product = PRODUCTS.find(p => p.id === btn.dataset.enquire);
-    const msg = `Hi Suzy! Please can you confirm the price for "${product.name}"?`;
-    btn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
-  });
+}
+
+function updateProductAction(productId, variantIndex){
+  const product = PRODUCTS.find(p => p.id === productId);
+  const variant = product.variants[variantIndex];
+  const container = document.querySelector(`[data-action-for="${productId}"]`);
+  if(!container) return;
+
+  if(variant.price !== null && variant.price !== undefined){
+    container.innerHTML = `<button class="add-to-cart-btn" data-add="${productId}" data-vidx="${variantIndex}">Add to Bag</button>`;
+    container.querySelector("[data-add]").addEventListener("click", ()=> addToCart(productId, variantIndex));
+  } else {
+    const msg = `Hi Suzy! Please can you confirm the price for "${product.name}" in ${variant.color}?`;
+    container.innerHTML = `<a class="add-to-cart-btn enquire-btn" href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">Enquire on WhatsApp</a>`;
+  }
 }
 
 // ===================== CART LOGIC =====================
-function addToCart(productId){
+function addToCart(productId, variantIndex){
   const product = PRODUCTS.find(p => p.id === productId);
   if(!product) return;
+  const variant = product.variants[variantIndex];
+  if(!variant) return;
+
+  const cartId = `${productId}::${variant.color}`;
   const cart = getCart();
-  const existing = cart.find(i => i.id === productId);
+  const existing = cart.find(i => i.cartId === cartId);
   if(existing){
     existing.qty += 1;
   }else{
-    cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, qty: 1 });
+    cart.push({
+      cartId,
+      name: `${product.name} — ${variant.color}`,
+      price: variant.price,
+      image: variant.image || product.image,
+      qty: 1
+    });
   }
   saveCart(cart);
-  showToast(`${product.name} added to your bag`);
+  showToast(`${product.name} (${variant.color}) added to your bag`);
   openCart();
 }
 
-function updateQty(productId, delta){
+function updateQty(cartId, delta){
   let cart = getCart();
-  const item = cart.find(i => i.id === productId);
+  const item = cart.find(i => i.cartId === cartId);
   if(!item) return;
   item.qty += delta;
   if(item.qty <= 0){
-    cart = cart.filter(i => i.id !== productId);
+    cart = cart.filter(i => i.cartId !== cartId);
   }
   saveCart(cart);
 }
 
-function removeItem(productId){
-  const cart = getCart().filter(i => i.id !== productId);
+function removeItem(cartId){
+  const cart = getCart().filter(i => i.cartId !== cartId);
   saveCart(cart);
 }
 
@@ -199,10 +260,10 @@ function renderCart(){
           <h4>${i.name}</h4>
           <p class="cart-item-price">${fmtNaira(i.price)}</p>
           <div class="qty-controls">
-            <button class="qty-btn" data-qty-down="${i.id}">−</button>
+            <button class="qty-btn" data-qty-down="${i.cartId}">−</button>
             <span>${i.qty}</span>
-            <button class="qty-btn" data-qty-up="${i.id}">+</button>
-            <button class="remove-item" data-remove="${i.id}">Remove</button>
+            <button class="qty-btn" data-qty-up="${i.cartId}">+</button>
+            <button class="remove-item" data-remove="${i.cartId}">Remove</button>
           </div>
         </div>
       </div>
@@ -227,7 +288,7 @@ function renderCart(){
     checkoutBtn.href = "#";
     checkoutBtn.classList.add("btn-disabled");
   }else{
-   const customer = getCustomer();
+    const customer = getCustomer();
     let message = "Hi Suzy! I'd like to order:\n\n";
     cart.forEach(i=>{
       message += `• ${i.name} x${i.qty} — ${fmtNaira(i.price * i.qty)}\n`;
@@ -256,7 +317,7 @@ function renderWishlist(){
       <img src="${p.image}" alt="${p.name}">
       <div class="wishlist-item-info">
         <h5>${p.name}</h5>
-        <span>${fmtNaira(p.price)}</span>
+        <span>${fmtNaira(p.variants[0].price)}</span>
       </div>
       <button class="wishlist-remove" data-unwish="${p.id}">Remove</button>
     </div>
@@ -322,7 +383,7 @@ document.getElementById("searchClose").addEventListener("click", closeSearch);
 // Close drawers on Escape
 document.addEventListener("keydown", (e)=>{
   if(e.key === "Escape"){
-   closeMenu(); closeCart(); closeSearch(); closeAccount();
+    closeMenu(); closeCart(); closeSearch(); closeAccount();
   }
 });
 
@@ -341,7 +402,7 @@ searchInput.addEventListener("input", ()=>{
   searchResults.innerHTML = matches.map(p => `
     <div class="search-result-item" data-goto="${p.id}">
       <span>${p.name}</span>
-      <span>${fmtNaira(p.price)}</span>
+      <span>${fmtNaira(p.variants[0].price)}</span>
     </div>
   `).join("") || `<p style="color:var(--ink-soft);padding:14px 4px;">No pieces match "${q}"</p>`;
 
@@ -389,10 +450,6 @@ if(accountForm){
 }
 
 // ===================== NEWSLETTER SIGNUP =====================
-// Uses Mailchimp's classic embedded-form pattern: the form posts to Mailchimp's
-// servers in a hidden iframe so the page never navigates away. Because that's a
-// cross-origin request, JS can't read whether it truly succeeded — so we just
-// show a friendly confirmation once the iframe reports it loaded a response.
 const newsletterForm = document.getElementById("newsletterForm");
 const newsletterMsg = document.getElementById("newsletterMsg");
 const hiddenIframe = document.getElementById("hidden_iframe");
