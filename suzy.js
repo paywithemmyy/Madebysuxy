@@ -21,7 +21,7 @@ const PRODUCTS = [
   },
   {
     id: "kelly-velvet",
-    name: "Kelly (Velvet)",
+    name: "Kelly",
     badge: "Handmade to order",
     image: "kelly.webp",
     variants: [
@@ -73,11 +73,19 @@ const PRODUCTS = [
   },
   {
     id: "bubbles-polka-dot",
-    name: "Bubbles (Polka Dot)",
+    name: "Bubbles",
     badge: "Handmade to order",
     image: "bubbles.webp",
     variants: [
-      { color: "Polka Dot", price: 55000 }
+      { color: "Polka Dot", price: 55000 },
+      { color: "Oreo", price: 80000, image: "oreo.webp" },
+      { color: "Two toned", price: 80000, image: "two toned.webp" },
+      { color: "Peach", price: 65000, image: "peach bub.webp" },
+      { color: "Classic", price: 35000, image: "classic.webp" },
+      { color: "Summer mix", price: 100000, image: "summer mix.webp" },
+      { color: "Aqua", price: 65000, image: "aqua bub.webp" },
+      { color: "Choco", price: 65000, image: "choco bub.webp" }
+
     ]
   }
 ];
