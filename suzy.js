@@ -25,7 +25,7 @@ const PRODUCTS = [
     badge: "Handmade to order",
     image: "kelly.webp",
     variants: [
-      { color: "Velvet", price: 80000 },
+      { color: "Velvet", price: 100000 },
       { color: "Classic pearl", price: 100000, image:"classic pearl.webp" },
       { color: "Acrylic", price: 100000, image:"Acrylic.webp" }
     ]
@@ -50,7 +50,7 @@ const PRODUCTS = [
     badge: "Limited edition",
     image: "wipsy.webp",
     variants: [
-      { color: "Original", price: 100000 }
+      { color: "Original", price: 120000 }
     ]
   },
   {
@@ -59,7 +59,7 @@ const PRODUCTS = [
     badge: "Handmade to order",
     image: "candy.webp",
     variants: [
-      { color: "Original", price: 45000 },
+      { color: "Original", price: 50000 },
       { color: "Mini candy", price: 40000, image:"mini candy.webp" },
       { color: "Crystalline", price: 50000, image:"crystalline.webp" },
       { color: "Blue raspberry", price: 50000, image:"blue raspberry.webp" },
@@ -72,7 +72,7 @@ const PRODUCTS = [
     badge: "Limited edition",
     image: "junk clutch.webp",
     variants: [
-      { color: "Original", price: 70000},
+      { color: "Original", price: 80000},
       { color: "Silver mix", price: 80000, image:"silver junk.webp" },
       { color: "Black", price: 80000, image:"junk black.webp" },
       { color: "Gold mix", price: 80000, image:"gold.webp" }
@@ -85,11 +85,11 @@ const PRODUCTS = [
     badge: "Handmade to order",
     image: "bubbles.webp",
     variants: [
-      { color: "Polka Dot", price: 55000 },
+      { color: "Polka Dot", price: 70000 },
       { color: "Oreo", price: 80000, image: "oreo.webp" },
       { color: "Two toned", price: 80000, image: "two toned.webp" },
       { color: "Peach", price: 65000, image: "peach bub.webp" },
-      { color: "Classic", price: 35000, image: "classic.webp" },
+      { color: "Classic", price: 65000, image: "classic.webp" },
       { color: "Summer mix", price: 100000, image: "summer mix.webp" },
       { color: "Aqua", price: 65000, image: "aqua bub.webp" },
       { color: "Choco", price: 65000, image: "choco bub.webp" }
