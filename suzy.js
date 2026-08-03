@@ -32,7 +32,7 @@ const PRODUCTS = [
   },
   {
     id: "blossom-choco",
-    name: "Blossom (Choco)",
+    name: "Blossom",
     badge: "Handmade to order",
     image: "blossom.webp",
     variants: [
@@ -59,7 +59,11 @@ const PRODUCTS = [
     badge: "Handmade to order",
     image: "candy.webp",
     variants: [
-      { color: "Original", price: 45000 }
+      { color: "Original", price: 45000 },
+      { color: "Mini candy", price: 40000, image:"mini candy.webp" },
+      { color: "Crystalline", price: 50000, image:"crystalline.webp" },
+      { color: "Blue raspberry", price: 50000, image:"blue raspberry.webp" },
+      { color: "Cotton candy", price: 50000, image:"cotton candy.webp" },
     ]
   },
   {
@@ -68,7 +72,11 @@ const PRODUCTS = [
     badge: "Limited edition",
     image: "junk clutch.webp",
     variants: [
-      { color: "Original", price: 70000 }
+      { color: "Original", price: 70000},
+      { color: "Silver mix", price: 80000, image:"silver junk.webp" },
+      { color: "Black", price: 80000, image:"junk black.webp" },
+      { color: "Gold mix", price: 80000, image:"gold.webp" }
+      
     ]
   },
   {
