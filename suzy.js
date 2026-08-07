@@ -95,7 +95,37 @@ const PRODUCTS = [
       { color: "Choco", price: 65000, image: "choco bub.webp" }
 
     ]
+  },
+  {
+    id: "Nyx purse",
+    name: "Nyx purse",
+    badge: "Handmade to order",
+    image: "purse.webp",
+    variants: [
+      { color: "Original", price: 25000 }
+    ]
+  },
+  {
+    id: "Maxi vintage",
+    name: "Maxi vintage",
+    badge: "Handmade to order",
+    image: "maxi.webp",
+    variants: [
+      { color: "Original", price: 35000 }
+    ]
+  },
+  {
+    id: "VIV",
+    name: "VIV",
+    badge: "Handmade to order",
+    image: "purse.webp",
+    variants: [
+      { color: "Pearl", price: 28000, image: "pearl viv.webp" },
+      { color: "Black", price: 28000, image: "black viv.webp" },
+      { color: "VIV 2.0", price: 28000, image: ".webp" }
+    ]
   }
+
 ];
 
 // ===================== HELPERS =====================
