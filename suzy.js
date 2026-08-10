@@ -122,9 +122,87 @@ const PRODUCTS = [
     variants: [
       { color: "Pearl", price: 28000, image: "pearl viv.webp" },
       { color: "Black", price: 28000, image: "black viv.webp" },
-      { color: "VIV 2.0", price: 28000, image: ".webp" }
+      { color: "VIV 2.0", price: 28000, image: "vip2.0.jpg" }
     ]
-  }
+  },
+  {
+    id: "CIEL",
+    name: "CIEL",
+    badge: "Handmade to order",
+    image: "ciel.jpg",
+    variants: [
+      { color: "CIEL 2.0", price: 45000, image: "ciel 2.0.jpg" },
+      { color: "CIEL~ two- toned", price: 40000, image: "two stoned.jpg" },
+      { color: "CIEL", price: 38500, image: "ciel.jpg" }
+    ]
+  },
+  {
+    id: "Glitz",
+    name: "Glitz",
+    badge: "Handmade to order",
+    image: "glirtz.jpg",
+    variants: [
+      { color: "Glitz", price: 120000, image: "glirtz.jpg" }
+    ]
+  },
+  {
+    id: "Sophie",
+    name: "Sophie",
+    badge: "Handmade to order",
+    image: "sophie.jpg",
+    variants: [
+      { color: "Sophie", price: 35000, image: "sophie.jpg" }
+    ]
+  },
+  {
+    id: "Mini Crystal",
+    name: "Crystal",
+    badge: "Handmade to order",
+    image: "mini.jpg",
+    variants: [
+      { color: "Crystal", price: 45000, image: "crystal.jpg" },
+      { color: "Mini Crystal", price: 30000, image: "mini.jpg" }
+    ]
+  },
+  {
+    id: "Berry",
+    name: "Berry",
+    badge: "Handmade to order",
+    image: "",
+    variants: [
+      { color: "Berry~Multi", price: 45000, image: "berry multi.jpg" },
+      { color: "Berry ~ Pop", price: 45000, image: ".jpg" },
+      { color: "Berry ~ Midi in black", price: 38500, image: "berry black.jpg" }
+    ]
+  },
+  {
+    id: "ICY",
+    name: "ICY",
+    badge: "Handmade to order",
+    image: "ICY.jpg",
+    variants: [
+      { color: "ICY", price: 50000, image: "ICY.jpg" }
+    ]
+  },
+  {
+    id: "Mini buttercup ~ Rose",
+    name: "Mini buttercup ~ Rose",
+    badge: "Handmade to order",
+    image: "rose.jpg",
+    variants: [
+      { color: "Mini buttercup ~ Rose", price: 45000, image: "rose.jpg" }
+    ]
+  },
+  {
+    id: "Bucket bag",
+    name: "Bucket bag",
+    badge: "Handmade to order",
+    image: "bucket.jpg",
+    variants: [
+      { color: "bucket", price: 45000, image: "bucket.jpg" }
+    ]
+  },
+  
 
 ];
 
