@@ -171,7 +171,7 @@ const PRODUCTS = [
     image: "",
     variants: [
       { color: "Berry~Multi", price: 45000, image: "berry multi.jpg" },
-      { color: "Berry ~ Pop", price: 45000, image: ".jpg" },
+      { color: "Berry ~ Pop", price: 45000, image: "pop.jpg" },
       { color: "Berry ~ Midi in black", price: 38500, image: "berry black.jpg" }
     ]
   },
