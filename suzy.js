@@ -59,11 +59,12 @@ const PRODUCTS = [
     badge: "Handmade to order",
     image: "candy.webp",
     variants: [
-      { color: "Original", price: 50000 },
+      { color: "bubblegum", price: 50000 },
       { color: "Mini candy", price: 40000, image:"mini candy.webp" },
       { color: "Crystalline", price: 50000, image:"crystalline.webp" },
       { color: "Blue raspberry", price: 50000, image:"blue raspberry.webp" },
       { color: "Cotton candy", price: 50000, image:"cotton candy.webp" },
+      { color: "Mint", price: 50000, image:"minto.jpg" }
     ]
   },
   {
@@ -155,13 +156,13 @@ const PRODUCTS = [
     ]
   },
   {
-    id: "Mini Crystal",
+    id: "Crystal",
     name: "Crystal",
     badge: "Handmade to order",
     image: "mini.jpg",
     variants: [
-      { color: "Crystal", price: 45000, image: "crystal.jpg" },
-      { color: "Mini Crystal", price: 30000, image: "mini.jpg" }
+      { color: "Crystal", price: 45000, image: "crystal.jpg" }
+     
     ]
   },
   {
@@ -171,8 +172,29 @@ const PRODUCTS = [
     image: "",
     variants: [
       { color: "Berry~Multi", price: 45000, image: "berry multi.jpg" },
-      { color: "Berry ~ Pop", price: 45000, image: "pop.jpg" },
-      { color: "Berry ~ Midi in black", price: 38500, image: "berry black.jpg" }
+      { color: "Berry ~ Pop", price: 45000, image: "pop.jpg" }
+    ]
+  },
+
+  {
+    id: "Berry(midi)",
+    name: "Berry(midi)",
+    badge: "Handmade to order",
+    image: "",
+    variants: [
+      { color: "Berry ~ Midi in multi color", price: 40000, image: "mids.jpg" },
+      { color: "Berry ~ Midi in black", price: 40000, image: "berry black.jpg" }
+    ]
+  },
+
+   {
+    id: "Mini Crystal",
+    name: "Mini Crystal",
+    badge: "Handmade to order",
+    image: "mini.jpg",
+    variants: [
+     
+      { color: "Mini Crystal", price: 30000, image: "mini.jpg" }
     ]
   },
   {
