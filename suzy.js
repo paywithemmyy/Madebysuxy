@@ -36,11 +36,11 @@ const PRODUCTS = [
     badge: "Handmade to order",
     image: "blossom.webp",
     variants: [
-      { color: "Choco", price: 40000, image:"blossom.webp" },
+      { color: "Choco", price: 45000, image:"blossom.webp" },
       { color: "Pastel", price: 45000, image:"pastel.webp" },
-      { color: "deep choco", price: 40000, image:"deep choco blo.webp" },
-      { color: "Pink", price: 40000, image:"choco pink.webp" },
-      { color: "Blue", price: 40000, image:"choco blue.webp" },
+      { color: "deep choco", price: 45000, image:"deep choco blo.webp" },
+      { color: "Pink", price: 45000, image:"choco pink.webp" },
+      { color: "Blue", price: 45000, image:"choco blue.webp" },
       { color: "Opal", price: 45000, image:"newblo.jpg" },
       { color: "Aqua", price: 45000, image:"newblo2.jpg" }
 
