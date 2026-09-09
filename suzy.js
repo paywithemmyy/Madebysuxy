@@ -78,7 +78,22 @@ const PRODUCTS = [
       { color: "Original", price: 80000},
       { color: "Silver mix", price: 80000, image:"silver junk.webp" },
       { color: "Black", price: 80000, image:"junk black.webp" },
-      { color: "Gold mix", price: 80000, image:"gold.webp" }
+      { color: "Gold mix", price: 80000, image:"gold.webp" },
+      { color: "polka dot", price: 80000, image:"jc polka.jpg" }
+      
+    ]
+  },
+  {
+    id: "the-junk-clutch",
+    name: "The Junk Clutch",
+    badge: "Limited edition",
+    image: "junk clutch.webp",
+    variants: [
+      { color: "Original", price: 80000},
+      { color: "Silver mix", price: 80000, image:"silver junk.webp" },
+      { color: "Black", price: 80000, image:"junk black.webp" },
+      { color: "Gold mix", price: 80000, image:"gold.webp" },
+      { color: "polka dot", price: 80000, image:"jc polka.jpg" }
       
     ]
   },
@@ -224,6 +239,24 @@ const PRODUCTS = [
     image: "bucket.jpg",
     variants: [
       { color: "bucket", price: 45000, image: "bucket.jpg" }
+    ]
+  },
+  {
+    id: "Junk clutch",
+    name: "Whimsy",
+    badge: "Handmade to order",
+    image: "whimsy.jpg",
+    variants: [
+      { color: "original", price: 80000, image: "whimsy.jpg" }
+    ]
+  },
+  {
+    id: "Mini pearl clutch",
+    name: "Mini pearl clutch",
+    badge: "Handmade to order",
+    image: "mini pearl.jpg",
+    variants: [
+      { color: "original", price: 25000, image: "mini pearl.jpg" }
     ]
   },
   
