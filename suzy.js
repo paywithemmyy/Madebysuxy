@@ -83,20 +83,7 @@ const PRODUCTS = [
       
     ]
   },
-  {
-    id: "the-junk-clutch",
-    name: "The Junk Clutch",
-    badge: "Limited edition",
-    image: "junk clutch.webp",
-    variants: [
-      { color: "Original", price: 80000},
-      { color: "Silver mix", price: 80000, image:"silver junk.webp" },
-      { color: "Black", price: 80000, image:"junk black.webp" },
-      { color: "Gold mix", price: 80000, image:"gold.webp" },
-      { color: "polka dot", price: 80000, image:"jc polka.jpg" }
-      
-    ]
-  },
+  
   {
     id: "bubbles-polka-dot",
     name: "Bubbles",
@@ -243,11 +230,11 @@ const PRODUCTS = [
   },
   {
     id: "Junk clutch",
-    name: "Whimsy",
+    name: "Junk clutch",
     badge: "Handmade to order",
     image: "whimsy.jpg",
     variants: [
-      { color: "original", price: 80000, image: "whimsy.jpg" }
+      { color: "whimsy", price: 80000, image: "whimsy.jpg" }
     ]
   },
   {
