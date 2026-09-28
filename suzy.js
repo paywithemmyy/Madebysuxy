@@ -216,7 +216,8 @@ const PRODUCTS = [
     badge: "Handmade to order",
     image: "rose.jpg",
     variants: [
-      { color: "Mini buttercup ~ Rose", price: 45000, image: "rose.jpg" }
+      { color: "Mini buttercup ~ Rose", price: 45000, image: "rose.jpg" },
+      { color: "Blue", price: 45000, image: "minibb.jpg" }
     ]
   },
   {
@@ -244,6 +245,25 @@ const PRODUCTS = [
     image: "mini pearl.jpg",
     variants: [
       { color: "original", price: 25000, image: "mini pearl.jpg" }
+    ]
+  },
+  {
+    id: "Special",
+    name: "Special",
+    badge: "Handmade to order",
+    image: "special.jpg",
+    variants: [
+      { color: "original", price: 25000, image: "special.jpg" }
+    ]
+  },
+  {
+    id: "Buttercup",
+    name: "Buttercup",
+    badge: "Handmade to order",
+    image: "buttercupb.jpg",
+    variants: [
+      { color: "original", price: 120000, image: "buttercupb.jpg" },
+      { color: "Blue", price: 70000, image: "buttercups.jpg" }
     ]
   },
   
